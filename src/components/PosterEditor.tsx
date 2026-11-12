@@ -36,7 +36,7 @@ export default function PosterEditor() {
   const save=useCallback(async()=>{
     const c=canvasRef.current;if(!c||!project)return;
     setSaving("Saving…");
-    const canvasJson=JSON.stringify(c.toJSON(["_label"]));
+    const canvasJson=JSON.stringify(c.toObject(["_label"]));
     const preview=c.toDataURL({format:"png",multiplier:Math.min(0.25,1200/project.width)});
     await db.projects.update(project.id,{canvasJson,preview,updatedAt:Date.now()});
     setSaving("Saved");
