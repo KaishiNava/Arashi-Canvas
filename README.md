@@ -31,3 +31,11 @@ Database browser bernama `AraishiCanvasDB`, tabel `projects`. Data tidak otomati
 - Undo/redo, PDF/JPG export, crop, multi-select, ruler, snap guides, custom font loader UI, dan gesture pinch/pan adalah tahap lanjutan.
 - Untuk font custom, letakkan file berlisensi di `public/fonts/`, lalu daftarkan melalui `@font-face` di CSS dan `customFonts`.
 - Jangan simpan file besar tanpa batas: pertimbangkan batas ukuran upload dan penanganan quota IndexedDB.
+
+
+## Mobile/editor fixes
+- Explicit device-width viewport metadata.
+- Mobile uses a bottom tool strip and hides desktop sidebars.
+- Poster is fit to the available canvas stage while retaining original design dimensions.
+- Uploaded images are stored as data URLs in the project JSON so they remain available after reload (subject to browser storage quota).
+- Properties panel is opened with the mobile Edit button.

@@ -15,9 +15,29 @@ button { cursor: pointer; }
 .tool { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px 4px; border-radius:10px; color:#555; font-size:11px; }
 .tool:hover, .tool.active { background:#f0f0ee; color:#111; }
 .canvas-wrap { background-color:#e9e9e6; background-image:linear-gradient(45deg,#dededb 25%,transparent 25%),linear-gradient(-45deg,#dededb 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#dededb 75%),linear-gradient(-45deg,transparent 75%,#dededb 75%); background-size:20px 20px; background-position:0 0,0 10px,10px -10px,-10px 0px; }
+/* Editor layout: desktop sidebars, mobile bottom toolbar + optional properties sheet. */
+.editor-grid { grid-template-columns: 76px minmax(0, 1fr) 260px; }
+.mobile-tools { display: none; }
 @media (max-width: 760px) {
-  .editor-grid { grid-template-columns: 1fr !important; }
-  .desktop-tools { display:none !important; }
-  .mobile-tools { display:flex !important; }
-  .properties { position:fixed; z-index:20; left:10px; right:10px; bottom:10px; max-height:48vh; overflow:auto; box-shadow:0 10px 40px #0002; }
+  .editor-grid { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: minmax(0, 1fr); }
+  .desktop-tools { display: none !important; }
+  .mobile-tools { display: flex !important; }
+  .properties { display: none; }
+  .properties.mobile-panel-open {
+    display: block;
+    position: fixed;
+    z-index: 40;
+    left: 10px;
+    right: 10px;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    max-height: 48vh;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px #0002;
+  }
+  .canvas-wrap { min-width: 0; }
+}
+@media (min-width: 761px) {
+  .properties { display: block; }
 }
